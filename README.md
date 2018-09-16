@@ -1,5 +1,6 @@
-# face-detection
+# Face-Eye-Detection
 
 
-hi frnds now we are discussing about face detection and  eye detection methods using haar .....
-
+follow my youtube videos...and try to do this
+vijeshkpaei@gmail.com
+kpvijesh.blogspot.com
