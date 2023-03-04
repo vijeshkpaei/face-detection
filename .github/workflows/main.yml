@@ -1,0 +1,38 @@
+name: CodeQL Analysis
+
+on:
+  push:
+    paths:
+      - 'Source/**'
+  pull_request:
+    paths:
+      - 'Source/**'
+  schedule:
+    - cron: '0 8 1 * *'
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    name: Analyze
+    permissions: write-all
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: [ 'python' ]
+    steps:
+      - name: Checkout repository
+        id: checkout_repo
+        uses: actions/checkout@v2
+
+      - name: Initialize CodeQL
+        id: init_codeql
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+          category: ${{ matrix.language }}
+          queries: security-and-quality
+
+   
+      - name: Perform CodeQL Analysis
+        id: analyze_codeql
+        uses: github/codeql-action/analyze@v2
